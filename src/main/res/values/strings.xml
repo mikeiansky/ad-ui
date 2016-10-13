@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ui</string>
+
+    <string name="empty_data">暂无数据</string>
+    <string name="error_data">加载出错，点击重新加载</string>
+
+</resources>
