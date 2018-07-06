@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="indicator_normal">#80ffffff</color>
+    <color name="indicator_select">#ffa211</color>
+
+    <color name="primary_color">#1B81D3</color>
+    <color name="divider">#D7D7D7</color>
+    <color name="background">#F3F2F7</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="no_login_bg">#e4e4e4</color>
+
+    <color name="empty">#20000000</color>
+
+    <color name="tab_background">#00CCFF</color>
+    <color name="tab_text">#72DCFF</color>
+    <color name="btn_normal">#ffa211</color>
+    <color name="tab_text_2">#FFF000</color>
+    <color name="action_text">#606366</color>
+    <color name="text_normal">#232323</color>
+
+
+    <color name="default_cover">#e9e9e9</color>
+    <color name="empty_select">#20000000</color>
+
+</resources>

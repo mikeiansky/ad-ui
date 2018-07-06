@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ProgressBar
+            android:id="@+id/load_more_pb"
+            android:layout_width="24dip"
+            android:layout_height="24dip"
+            android:layout_marginRight="10dip" />
+
+        <TextView
+            android:id="@+id/load_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在加载..."
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</LinearLayout>

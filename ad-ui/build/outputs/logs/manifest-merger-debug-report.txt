@@ -1,0 +1,45 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+	package
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:2:5-28
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:1-11:12
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:1:11-69
+application
+ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:4:5-9:19
+	android:supportsRtl
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:7:9-35
+	android:label
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:6:9-41
+	android:allowBackup
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml:5:9-35
+uses-sdk
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+		ADDED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
+		INJECTED from E:\github\ad-ui\ad-ui\src\main\AndroidManifest.xml
