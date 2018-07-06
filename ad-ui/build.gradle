@@ -33,7 +33,7 @@ dependencies {
 def siteUrl = 'https://github.com/WinsonZhou/ad-ui' // 项目主页。
 def gitUrl = 'https://github.com/WinsonZhou/ad-ui.git' // Git仓库的url
 group = "com.github.winsonzhou"
-version = '0.1.4'
+version = '0.1.6'
 
 install {
     repositories.mavenInstaller {
@@ -59,7 +59,7 @@ install {
                     developer {
                         id 'winson' // 开发者的id。
                         name 'zhouwenxiang' // 开发者名字。
-                        email '929566854@qq.com' // 开发者邮箱。
+                        email 'winsonwork@outlook.com' // 开发者邮箱。
                     }
                 }
 
@@ -111,7 +111,7 @@ bintray {
     pkg {
         repo = "ad-ui"  //Repository名字 需要自己在bintray网站上先添加
         name = "ad-ui"// 发布到Bintray上的项目名字，这里的名字不是compile 'com.ansen.library:circleimage:1.0.1'中的circleimage。
-        userOrg = 'winson'//Bintray的组织id
+        userOrg = 'winsonwork'//Bintray的组织id
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
