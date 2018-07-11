@@ -1,7 +1,5 @@
 package com.winson.ui.widget;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +11,14 @@ import android.widget.TextView;
 
 import com.winson.ui.R;
 
-import org.w3c.dom.Text;
 
 /**
  * Created by Winson on 2016/2/5.
  */
 public class EmptyViewUtils {
+
+    public static final int IGNORE_COLOR = Integer.MAX_VALUE;
+    public static final int IGNORE_TEXT_SIZE = -1;
 
     static void show(ViewGroup parent, View child) {
         if (parent instanceof FrameLayout
@@ -33,7 +33,7 @@ public class EmptyViewUtils {
         return new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     }
 
-    public static View showCustomLoadingView(ViewGroup parent, View customLoadingView) {
+    public static View showLoadingView(ViewGroup parent, View customLoadingView) {
         if (parent == null) {
             return null;
         }
@@ -46,14 +46,15 @@ public class EmptyViewUtils {
             customLoadingView.setLayoutParams(getLayoutParams());
             parent.addView(customLoadingView, 0);
         }
+        show(parent, customLoadingView);
         return customLoadingView;
     }
 
     public static View showLoadingView(ViewGroup parent) {
-        return showLoadingView(parent, 0, 0);
+        return showLoadingView(parent, IGNORE_TEXT_SIZE, IGNORE_COLOR);
     }
 
-    public static View showLoadingView(ViewGroup parent, int pbSize, int color) {
+    public static View showLoadingView(ViewGroup parent, int pbSize, int backgroundColor) {
         if (parent == null) {
             return null;
         }
@@ -66,21 +67,23 @@ public class EmptyViewUtils {
             loadingView.setLayoutParams(getLayoutParams());
             parent.addView(loadingView, 0);
         }
-        if (pbSize != 0) {
+        if (pbSize != IGNORE_TEXT_SIZE) {
             ProgressBar pb = (ProgressBar) loadingView.findViewById(R.id.progress_bar);
-            if(pb!=null){
+            if (pb != null) {
                 ViewGroup.LayoutParams lp = pb.getLayoutParams();
                 lp.width = pbSize;
                 lp.height = pbSize;
                 pb.setLayoutParams(lp);
             }
         }
-        loadingView.setBackgroundColor(color);
+        if (backgroundColor != IGNORE_COLOR) {
+            loadingView.setBackgroundColor(backgroundColor);
+        }
         show(parent, loadingView);
         return loadingView;
     }
 
-    public static View showCustomErrorView(ViewGroup parent, View customErrorView) {
+    public static View showErrorView(ViewGroup parent, View customErrorView, View.OnClickListener clickListener) {
         if (parent == null) {
             return null;
         }
@@ -96,23 +99,11 @@ public class EmptyViewUtils {
         return customErrorView;
     }
 
-    public static View showErrorView(ViewGroup parent, View.OnClickListener listener) {
-        return showErrorView(parent, null, 0, 0, 0, listener);
+    public static View showErrorView(ViewGroup parent, View customErrorView) {
+        return showErrorView(parent, customErrorView, null);
     }
 
-    public static View showErrorView(ViewGroup parent, String msg, View.OnClickListener listener) {
-        return showErrorView(parent, msg, 0, 0, 0, listener);
-    }
-
-    public static View showErrorView(ViewGroup parent, int color, View.OnClickListener listener) {
-        return showErrorView(parent, null, color, 0, 0, listener);
-    }
-
-    public static View showErrorView(ViewGroup parent, float textSize, int textColor, View.OnClickListener listener) {
-        return showErrorView(parent, null, 0, textSize, textColor, listener);
-    }
-
-    public static View showErrorView(ViewGroup parent, String msg, int color, float textSize, int textColor, View.OnClickListener listener) {
+    public static View showErrorView(ViewGroup parent, String msg, int backgroundColor, float textSize, int textColor, View.OnClickListener listener) {
         if (parent == null) {
             return null;
         }
@@ -129,19 +120,37 @@ public class EmptyViewUtils {
         if (msg != null) {
             msgText.setText(msg);
         }
-        if (textSize != 0) {
+        if (textSize != IGNORE_TEXT_SIZE) {
             msgText.setTextSize(textSize);
         }
-        if (textColor != 0) {
+        if (textColor != IGNORE_COLOR) {
             msgText.setTextColor(textColor);
         }
+        if (backgroundColor != IGNORE_COLOR) {
+            errorView.setBackgroundColor(backgroundColor);
+        }
         errorView.setOnClickListener(listener);
-        errorView.setBackgroundColor(color);
         show(parent, errorView);
         return errorView;
     }
 
-    public static View showCustomEmptyView(ViewGroup parent, View customEmptyView) {
+    public static View showErrorView(ViewGroup parent, float textSize, int textColor, View.OnClickListener listener) {
+        return showErrorView(parent, null, IGNORE_COLOR, textSize, textColor, listener);
+    }
+
+    public static View showErrorView(ViewGroup parent, View.OnClickListener listener) {
+        return showErrorView(parent, null, IGNORE_COLOR, IGNORE_TEXT_SIZE, Integer.MAX_VALUE, listener);
+    }
+
+    public static View showErrorView(ViewGroup parent, String msg, View.OnClickListener listener) {
+        return showErrorView(parent, msg, IGNORE_COLOR, IGNORE_TEXT_SIZE, Integer.MAX_VALUE, listener);
+    }
+
+    public static View showErrorView(ViewGroup parent, int backgroundColor, View.OnClickListener listener) {
+        return showErrorView(parent, null, backgroundColor, IGNORE_TEXT_SIZE, Integer.MAX_VALUE, listener);
+    }
+
+    public static View showEmptyView(ViewGroup parent, View customEmptyView, View.OnClickListener clickListener) {
         if (parent == null) {
             return null;
         }
@@ -157,23 +166,11 @@ public class EmptyViewUtils {
         return customEmptyView;
     }
 
-    public static View showEmptyView(ViewGroup parent, View.OnClickListener listener) {
-        return showEmptyView(parent, null, 0, 0, 0, listener);
+    public static View showEmptyView(ViewGroup parent, View customEmptyView) {
+        return showEmptyView(parent, customEmptyView, null);
     }
 
-    public static View showEmptyView(ViewGroup parent, int color, View.OnClickListener listener) {
-        return showEmptyView(parent, null, color, 0, 0, listener);
-    }
-
-    public static View showEmptyView(ViewGroup parent, String msg, View.OnClickListener listener) {
-        return showEmptyView(parent, msg, 0, 0, 0, listener);
-    }
-
-    public static View showEmptyView(ViewGroup parent, float textSize, int textColor, View.OnClickListener listener) {
-        return showEmptyView(parent, null, 0, textSize, textColor, listener);
-    }
-
-    public static View showEmptyView(ViewGroup parent, String msg, int color, float textSize, int textColor, View.OnClickListener listener) {
+    public static View showEmptyView(ViewGroup parent, String msg, int backgroundColor, float textSize, int textColor, View.OnClickListener listener) {
         if (parent == null) {
             return null;
         }
@@ -191,15 +188,33 @@ public class EmptyViewUtils {
         if (msg != null) {
             msgText.setText(msg);
         }
-        if (textSize != 0) {
+        if (textSize != IGNORE_TEXT_SIZE) {
             msgText.setTextSize(textSize);
         }
-        if (textColor != 0) {
+        if (textColor != IGNORE_COLOR) {
             msgText.setTextColor(textColor);
         }
-        emptyView.setBackgroundColor(color);
+        if (backgroundColor != IGNORE_COLOR) {
+            emptyView.setBackgroundColor(backgroundColor);
+        }
         show(parent, emptyView);
         return emptyView;
+    }
+
+    public static View showEmptyView(ViewGroup parent, View.OnClickListener listener) {
+        return showEmptyView(parent, null, IGNORE_COLOR, IGNORE_TEXT_SIZE, IGNORE_COLOR, listener);
+    }
+
+    public static View showEmptyView(ViewGroup parent, int color, View.OnClickListener listener) {
+        return showEmptyView(parent, null, color, IGNORE_TEXT_SIZE, IGNORE_COLOR, listener);
+    }
+
+    public static View showEmptyView(ViewGroup parent, String msg, View.OnClickListener listener) {
+        return showEmptyView(parent, msg, IGNORE_COLOR, IGNORE_TEXT_SIZE, IGNORE_COLOR, listener);
+    }
+
+    public static View showEmptyView(ViewGroup parent, float textSize, int textColor, View.OnClickListener listener) {
+        return showEmptyView(parent, null, IGNORE_COLOR, textSize, textColor, listener);
     }
 
     public static void removeEmptyView(ViewGroup parent) {
