@@ -1,4 +1,4 @@
-package com.winson.ui.widget;
+package com.winson.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;

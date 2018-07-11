@@ -1,10 +1,8 @@
-package com.winson.ui.widget.listview;
+package com.winson.ui.listview;
 
 import android.content.Context;
-import android.os.Debug;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

@@ -1,11 +1,8 @@
-package com.winson.ui.widget.listview;
+package com.winson.ui.listview;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.widget.ListView;
 
-import com.winson.ui.widget.CommonAdapter;
+import com.winson.ui.CommonAdapter;
 
 import java.util.List;
 

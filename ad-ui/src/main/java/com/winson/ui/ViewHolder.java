@@ -1,4 +1,4 @@
-package com.winson.ui.widget;
+package com.winson.ui;
 
 import android.util.SparseArray;
 import android.view.LayoutInflater;

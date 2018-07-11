@@ -1,4 +1,4 @@
-package com.winson.ui.widget;
+package com.winson.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +15,7 @@ import com.winson.ui.R;
 /**
  * Created by Winson on 2016/2/5.
  */
-public class EmptyViewUtils {
+public class EmptyUIUtils {
 
     public static final int IGNORE_COLOR = Integer.MAX_VALUE;
     public static final int IGNORE_TEXT_SIZE = -1;

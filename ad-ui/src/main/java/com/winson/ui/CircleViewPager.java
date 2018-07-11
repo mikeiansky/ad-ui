@@ -1,4 +1,4 @@
-package com.winson.ui.widget;
+package com.winson.ui;
 
 import android.content.Context;
 import android.os.Handler;
@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.KeyEvent;
 
 
 /**

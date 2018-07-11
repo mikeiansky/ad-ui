@@ -1,4 +1,4 @@
-package com.winson.ui.widget;
+package com.winson.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -7,8 +7,6 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.winson.ui.R;
 
 /**
  * Created by Winson on 2016/1/19.

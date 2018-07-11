@@ -1,10 +1,9 @@
-package com.winson.ui.widget;
+package com.winson.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.LinearLayout;
 
 
