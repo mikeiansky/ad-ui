@@ -34,40 +34,42 @@ public class EmptyViewUtils {
     }
 
     public static View showLoadingView(ViewGroup parent, View customLoadingView) {
+        return showLoadingView(parent, customLoadingView, null);
+    }
+
+    public static View showLoadingView(ViewGroup parent, View customLoadingView, View.OnClickListener clickListener) {
         if (parent == null) {
             return null;
         }
-        removeEmptyView(parent);
-        removeErrorView(parent);
-        View loadingView = parent.findViewById(R.id.loading_view);
-        if (customLoadingView != loadingView) {
-            removeLoadingView(parent, false);
-            customLoadingView.setId(R.id.loading_view);
-            customLoadingView.setLayoutParams(getLayoutParams());
-            parent.addView(customLoadingView, 0);
-        }
+        removeAllView(parent);
+//        View loadingView = parent.findViewById(R.id.loading_view);
+//        if (customLoadingView != loadingView) {
+        customLoadingView.setId(R.id.loading_view);
+        customLoadingView.setLayoutParams(getLayoutParams());
+        customLoadingView.setOnClickListener(clickListener);
+        parent.addView(customLoadingView, 0);
+//        }
         show(parent, customLoadingView);
         return customLoadingView;
     }
 
     public static View showLoadingView(ViewGroup parent) {
-        return showLoadingView(parent, IGNORE_TEXT_SIZE, IGNORE_COLOR);
+        return showLoadingView(parent, 0, IGNORE_COLOR);
     }
 
     public static View showLoadingView(ViewGroup parent, int pbSize, int backgroundColor) {
         if (parent == null) {
             return null;
         }
-        removeEmptyView(parent);
-        removeErrorView(parent);
+        removeAllView(parent);
         View loadingView = parent.findViewById(R.id.loading_view);
-        if (loadingView == null) {
-            loadingView = LayoutInflater.from(parent.getContext()).inflate(R.layout.loading_view, parent, false);
-            loadingView.setId(R.id.loading_view);
-            loadingView.setLayoutParams(getLayoutParams());
-            parent.addView(loadingView, 0);
-        }
-        if (pbSize != IGNORE_TEXT_SIZE) {
+//        if (loadingView == null) {
+        loadingView = LayoutInflater.from(parent.getContext()).inflate(R.layout.loading_view, parent, false);
+        loadingView.setId(R.id.loading_view);
+        loadingView.setLayoutParams(getLayoutParams());
+        parent.addView(loadingView, 0);
+//        }
+        if (pbSize != 0) {
             ProgressBar pb = (ProgressBar) loadingView.findViewById(R.id.progress_bar);
             if (pb != null) {
                 ViewGroup.LayoutParams lp = pb.getLayoutParams();
@@ -87,19 +89,18 @@ public class EmptyViewUtils {
         if (parent == null) {
             return null;
         }
-        removeEmptyView(parent);
-        removeLoadingView(parent, false);
-        View errorView = parent.findViewById(R.id.error_view);
-        if (customErrorView != errorView) {
-            removeErrorView(parent);
-            customErrorView.setId(R.id.error_view);
-            customErrorView.setLayoutParams(getLayoutParams());
-            parent.addView(customErrorView, 0);
-        }
+        removeAllView(parent);
+//        View errorView = parent.findViewById(R.id.error_view);
+//        if (customErrorView != errorView) {
+        customErrorView.setId(R.id.error_view);
+        customErrorView.setLayoutParams(getLayoutParams());
+        customErrorView.setOnClickListener(clickListener);
+        parent.addView(customErrorView, 0);
+//        }
         return customErrorView;
     }
 
-    public static View showErrorView(ViewGroup parent, View customErrorView) {
+    public static View showErrorView(ViewGroup parent, View customErrorView, int tag) {
         return showErrorView(parent, customErrorView, null);
     }
 
@@ -107,15 +108,14 @@ public class EmptyViewUtils {
         if (parent == null) {
             return null;
         }
-        removeEmptyView(parent);
-        removeLoadingView(parent, false);
+        removeAllView(parent);
         View errorView = parent.findViewById(R.id.error_view);
-        if (errorView == null) {
-            errorView = LayoutInflater.from(parent.getContext()).inflate(R.layout.error_view, parent, false);
-            errorView.setLayoutParams(getLayoutParams());
-            errorView.setId(R.id.error_view);
-            parent.addView(errorView, 0);
-        }
+//        if (errorView == null) {
+        errorView = LayoutInflater.from(parent.getContext()).inflate(R.layout.error_view, parent, false);
+        errorView.setLayoutParams(getLayoutParams());
+        errorView.setId(R.id.error_view);
+        parent.addView(errorView, 0);
+//        }
         TextView msgText = (TextView) errorView.findViewById(R.id.msg);
         if (msg != null) {
             msgText.setText(msg);
@@ -154,19 +154,18 @@ public class EmptyViewUtils {
         if (parent == null) {
             return null;
         }
-        removeErrorView(parent);
-        removeLoadingView(parent, false);
-        View errorView = parent.findViewById(R.id.empty_view);
-        if (customEmptyView != errorView) {
-            removeEmptyView(parent);
-            customEmptyView.setId(R.id.empty_view);
-            customEmptyView.setLayoutParams(getLayoutParams());
-            parent.addView(customEmptyView, 0);
-        }
+        removeAllView(parent);
+//        View errorView = parent.findViewById(R.id.empty_view);
+//        if (customEmptyView != errorView) {
+        customEmptyView.setId(R.id.empty_view);
+        customEmptyView.setLayoutParams(getLayoutParams());
+        customEmptyView.setOnClickListener(clickListener);
+        parent.addView(customEmptyView, 0);
+//        }
         return customEmptyView;
     }
 
-    public static View showEmptyView(ViewGroup parent, View customEmptyView) {
+    public static View showEmptyView(ViewGroup parent, View customEmptyView, int tag) {
         return showEmptyView(parent, customEmptyView, null);
     }
 
@@ -174,8 +173,7 @@ public class EmptyViewUtils {
         if (parent == null) {
             return null;
         }
-        removeErrorView(parent);
-        removeLoadingView(parent, false);
+        removeAllView(parent);
         View emptyView = parent.findViewById(R.id.empty_view);
         if (emptyView == null) {
             emptyView = LayoutInflater.from(parent.getContext()).inflate(R.layout.empty_view, parent, false);
@@ -205,8 +203,8 @@ public class EmptyViewUtils {
         return showEmptyView(parent, null, IGNORE_COLOR, IGNORE_TEXT_SIZE, IGNORE_COLOR, listener);
     }
 
-    public static View showEmptyView(ViewGroup parent, int color, View.OnClickListener listener) {
-        return showEmptyView(parent, null, color, IGNORE_TEXT_SIZE, IGNORE_COLOR, listener);
+    public static View showEmptyView(ViewGroup parent, int backgroundColor, View.OnClickListener listener) {
+        return showEmptyView(parent, null, backgroundColor, IGNORE_TEXT_SIZE, IGNORE_COLOR, listener);
     }
 
     public static View showEmptyView(ViewGroup parent, String msg, View.OnClickListener listener) {
@@ -217,27 +215,27 @@ public class EmptyViewUtils {
         return showEmptyView(parent, null, IGNORE_COLOR, textSize, textColor, listener);
     }
 
-    public static void removeEmptyView(ViewGroup parent) {
-        if (parent == null) {
-            return;
-        }
-        parent.removeView(parent.findViewById(R.id.empty_view));
-    }
-
-    public static void removeErrorView(ViewGroup parent) {
-        if (parent == null) {
-            return;
-        }
-        parent.removeView(parent.findViewById(R.id.error_view));
-    }
-
-    public static void removeLoadingView(final ViewGroup parent, boolean animation) {
-        if (parent == null) {
-            return;
-        }
-        final View loadingView = parent.findViewById(R.id.loading_view);
-        parent.removeView(loadingView);
-    }
+//    public static void removeEmptyView(ViewGroup parent) {
+//        if (parent == null) {
+//            return;
+//        }
+//        parent.removeView(parent.findViewById(R.id.empty_view));
+//    }
+//
+//    public static void removeErrorView(ViewGroup parent) {
+//        if (parent == null) {
+//            return;
+//        }
+//        parent.removeView(parent.findViewById(R.id.error_view));
+//    }
+//
+//    public static void removeLoadingView(final ViewGroup parent, boolean animation) {
+//        if (parent == null) {
+//            return;
+//        }
+//        final View loadingView = parent.findViewById(R.id.loading_view);
+//        parent.removeView(loadingView);
+//    }
 
     public static void removeAllView(ViewGroup parent) {
         if (parent == null) {
