@@ -1,4 +1,4 @@
-package com.winson.ui;
+package com.winson.widget;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.winson.ui.R;
+import com.winson.widget.R;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.winson.ui;
+package com.winson.widget;
 
 import android.app.Dialog;
 import android.content.Context;

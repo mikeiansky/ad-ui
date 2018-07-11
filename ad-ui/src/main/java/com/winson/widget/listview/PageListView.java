@@ -1,4 +1,4 @@
-package com.winson.ui.listview;
+package com.winson.widget.listview;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-import com.winson.ui.R;
+import com.winson.widget.R;
 
 /**
  * Created by Winson on 2016/3/7.

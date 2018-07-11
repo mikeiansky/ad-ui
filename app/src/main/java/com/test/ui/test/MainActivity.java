@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.winson.ui.EmptyUIUtils;
+import com.winson.widget.EmptyUIUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

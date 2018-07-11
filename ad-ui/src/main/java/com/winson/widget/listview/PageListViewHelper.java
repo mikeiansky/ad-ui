@@ -1,8 +1,8 @@
-package com.winson.ui.listview;
+package com.winson.widget.listview;
 
 import android.widget.ListView;
 
-import com.winson.ui.CommonAdapter;
+import com.winson.widget.CommonAdapter;
 
 import java.util.List;
 

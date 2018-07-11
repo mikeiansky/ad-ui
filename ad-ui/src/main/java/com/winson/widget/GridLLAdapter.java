@@ -1,4 +1,4 @@
-package com.winson.ui;
+package com.winson.widget;
 
 import android.content.Context;
 import android.view.LayoutInflater;
