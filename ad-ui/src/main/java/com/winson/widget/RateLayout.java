@@ -16,6 +16,16 @@ public class RateLayout extends FrameLayout {
     public static final String TAG = RateLayout.class.getSimpleName();
 
     /**
+     * Layout depend by width base
+     */
+    public static final int HORIZONTAL = 0;
+
+    /**
+     * Layout depend by height base
+     */
+    public static final int VERTICAL = 1;
+
+    /**
      * rate value = width/height
      */
     private float mRate;
@@ -45,7 +55,7 @@ public class RateLayout extends FrameLayout {
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RateLayout);
         mRate = a.getFloat(R.styleable.RateLayout_rate_layout, 1f);
-        mRateOritation = a.getInteger(R.styleable.RateLayout_rate_oritation, 0);
+        mRateOritation = a.getInteger(R.styleable.RateLayout_rate_orientation, HORIZONTAL);
         a.recycle();
     }
 
@@ -63,7 +73,7 @@ public class RateLayout extends FrameLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthSpec = widthMeasureSpec;
         int heightSpec = heightMeasureSpec;
-        if (mRateOritation == 0) {
+        if (mRateOritation == HORIZONTAL) {
             int width = MeasureSpec.getSize(widthMeasureSpec);
             heightSpec = MeasureSpec.makeMeasureSpec(Math.round(width * mRate), MeasureSpec.EXACTLY);
         } else {

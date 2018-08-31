@@ -18,10 +18,10 @@ public class GridLinearLayout extends ViewGroup {
     private static final int DIVIDER_MIDDLE = 1;
 
     private int mColumnCount;
-    private int mHorizonalSpace;
+    private int mHorizontalSpace;
     private int mVerticalSpace;
     private int mCount = -1;
-    private int mHorizonalDividerMode;
+    private int mHorizontalDividerMode;
     private int mVerticalDividerMode;
     private boolean mChildCountChanged;
     private GridLLAdapter mAdapter;
@@ -50,9 +50,9 @@ public class GridLinearLayout extends ViewGroup {
     public void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.GridLinearLayout);
         mColumnCount = a.getInt(R.styleable.GridLinearLayout_column_count, 3);
-        mHorizonalSpace = a.getDimensionPixelSize(R.styleable.GridLinearLayout_horizonal_space, 0);
+        mHorizontalSpace = a.getDimensionPixelSize(R.styleable.GridLinearLayout_horizontal_space, 0);
         mVerticalSpace = a.getDimensionPixelSize(R.styleable.GridLinearLayout_vertical_space, 0);
-        mHorizonalDividerMode = a.getInteger(R.styleable.GridLinearLayout_horizonal_divider_mode, 0);
+        mHorizontalDividerMode = a.getInteger(R.styleable.GridLinearLayout_horizontal_divider_mode, 0);
         mVerticalDividerMode = a.getInteger(R.styleable.GridLinearLayout_vertical_divider_mode, 0);
         a.recycle();
     }
@@ -84,13 +84,13 @@ public class GridLinearLayout extends ViewGroup {
             int paddingRight = getPaddingRight();
 
             int horizonalSpaceCount = 0;
-            if (mHorizonalDividerMode == DIVIDER_MIDDLE) {
+            if (mHorizontalDividerMode == DIVIDER_MIDDLE) {
                 horizonalSpaceCount = mColumnCount - 1;
             } else {
                 horizonalSpaceCount = mColumnCount + 1;
             }
 
-            int remanentWidth = MeasureSpec.getSize(widthMeasureSpec) - horizonalSpaceCount * mHorizonalSpace
+            int remanentWidth = MeasureSpec.getSize(widthMeasureSpec) - horizonalSpaceCount * mHorizontalSpace
                     - paddingleft - paddingRight;
 
             // child mode - at most
@@ -157,8 +157,8 @@ public class GridLinearLayout extends ViewGroup {
 
                     startLeft = paddingLeft;
 
-                    if (mHorizonalDividerMode != DIVIDER_MIDDLE) {
-                        startLeft += mHorizonalSpace;
+                    if (mHorizontalDividerMode != DIVIDER_MIDDLE) {
+                        startLeft += mHorizontalSpace;
                     }
 
                     if (i == 0 && mVerticalDividerMode == DIVIDER_MIDDLE) {
@@ -168,7 +168,7 @@ public class GridLinearLayout extends ViewGroup {
                     }
                     lineMaxHeight = 0;
                 } else {
-                    startLeft += mHorizonalSpace;
+                    startLeft += mHorizontalSpace;
                 }
 
                 View child = getChildAt(i);

@@ -15,7 +15,7 @@ import com.winson.widget.R;
 /**
  * Created by Winson on 2016/2/5.
  */
-public class EmptyUIUtils {
+public class EmptyViewUtils {
 
     public static final int IGNORE_COLOR = Integer.MAX_VALUE;
     public static final int IGNORE_TEXT_SIZE = -1;

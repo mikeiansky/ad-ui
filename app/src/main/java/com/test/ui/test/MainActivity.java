@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.winson.widget.EmptyUIUtils;
+import com.winson.widget.EmptyViewUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,25 +33,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = view.getId();
         switch (id) {
             case R.id.load:
-                EmptyUIUtils.showLoadingView(emptyGroup);
+                EmptyViewUtils.showLoadingView(emptyGroup);
                 break;
             case R.id.error:
-                EmptyUIUtils.showErrorView(emptyGroup, null);
+                EmptyViewUtils.showErrorView(emptyGroup, null);
                 break;
             case R.id.empty:
-                EmptyUIUtils.showEmptyView(emptyGroup, null);
+                EmptyViewUtils.showEmptyView(emptyGroup, null);
                 break;
             case R.id.load_c:
                 View load_c = LayoutInflater.from(this).inflate(R.layout.load_c, emptyGroup, false);
-                EmptyUIUtils.showLoadingView(emptyGroup, load_c);
+                EmptyViewUtils.showLoadingView(emptyGroup, load_c);
                 break;
             case R.id.error_c:
                 View error_c = LayoutInflater.from(this).inflate(R.layout.error_c, emptyGroup, false);
-                EmptyUIUtils.showLoadingView(emptyGroup, error_c);
+                EmptyViewUtils.showLoadingView(emptyGroup, error_c);
                 break;
             case R.id.empty_c:
                 View empty_c = LayoutInflater.from(this).inflate(R.layout.empty_c, emptyGroup, false);
-                EmptyUIUtils.showLoadingView(emptyGroup, empty_c);
+                EmptyViewUtils.showLoadingView(emptyGroup, empty_c);
                 break;
         }
     }

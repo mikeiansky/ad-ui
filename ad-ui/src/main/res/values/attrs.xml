@@ -2,12 +2,16 @@
 <resources>
 
     <declare-styleable name="RateImageView">
-        <attr name="rate_image" format="float" />
+        <attr name="image_rate_orientation" format="integer">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="image_rate" format="float" />
     </declare-styleable>
 
     <declare-styleable name="RateLayout">
-        <attr name="rate_oritation" format="integer">
-            <enum name="horization" value="0" />
+        <attr name="rate_orientation" format="integer">
+            <enum name="horizontal" value="0" />
             <enum name="vertical" value="1" />
         </attr>
         <attr name="rate_layout" format="float" />
@@ -15,9 +19,9 @@
 
     <declare-styleable name="GridLinearLayout">
         <attr name="column_count" format="integer" />
-        <attr name="horizonal_space" format="dimension" />
+        <attr name="horizontal_space" format="dimension" />
         <attr name="vertical_space" format="dimension" />
-        <attr name="horizonal_divider_mode" format="integer">
+        <attr name="horizontal_divider_mode" format="integer">
             <enum name="middle" value="1" />
             <enum name="normal" value="0" />
         </attr>
