@@ -65,8 +65,9 @@
 
         <ImageView
             android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_height="400dp"
             android:id="@+id/iv_test_round"
+            android:background="#20123456"
             />
 
     </RelativeLayout>
