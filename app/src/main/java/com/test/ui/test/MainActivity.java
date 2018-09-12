@@ -1,11 +1,13 @@
 package com.test.ui.test;
 
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
 import com.winson.widget.EmptyViewUtils;
@@ -31,7 +33,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.empty_c).setOnClickListener(this);
 
         testRoundIV = findViewById(R.id.iv_test_round);
-        testRoundIV.setImageBitmap(ImageUtils.convertRoundBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.test_round),200));
+//        testRoundIV.setImageBitmap(ImageUtils.convertRoundBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.test_round),200));
+
+        testRoundIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = ImageUtils.convertRoundBitmap(MainActivity.this, R.mipmap.test_round,
+                        testRoundIV.getWidth(), testRoundIV.getHeight(), 50, ImageView.ScaleType.CENTER_INSIDE);
+
+                testRoundIV.setImageBitmap(bitmap);
+            }
+        });
+
+        testRoundIV.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                Bitmap bitmap = ImageUtils.convertRoundBitmap(MainActivity.this, R.mipmap.test_round,
+                        testRoundIV.getWidth(), testRoundIV.getHeight(), 50, ImageView.ScaleType.CENTER_CROP);
+
+                testRoundIV.setImageBitmap(bitmap);
+
+                testRoundIV.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+            }
+        });
+
     }
 
     @Override
