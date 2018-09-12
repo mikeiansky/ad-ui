@@ -1,16 +1,20 @@
 package com.test.ui.test;
 
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.winson.widget.EmptyViewUtils;
+import com.winson.widget.ImageUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ViewGroup emptyGroup;
+    ImageView testRoundIV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.error_c).setOnClickListener(this);
         findViewById(R.id.empty_c).setOnClickListener(this);
 
+        testRoundIV = findViewById(R.id.iv_test_round);
+        testRoundIV.setImageBitmap(ImageUtils.convertRoundBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.test_round),200));
     }
 
     @Override
