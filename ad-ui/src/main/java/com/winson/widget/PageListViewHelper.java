@@ -24,7 +24,7 @@ public class PageListViewHelper<T> {
     private ListView listView;
     private View footView;
     private CommonAdapter<T> adapter;
-    private boolean hasMore = false;
+    private boolean hasMore = true;
     private boolean onLoading = false;
     private boolean cancel = false;
     private int pageIndex = 1;
@@ -43,6 +43,10 @@ public class PageListViewHelper<T> {
 
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public CommonAdapter getCommonAdapter() {
+        return adapter;
     }
 
     public PageListViewHelper(ListView listView, CommonAdapter<T> adapter, int footViewLayoutId) {
