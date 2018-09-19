@@ -113,6 +113,7 @@ public class PageRecyclerViewHelper<T> {
         onLoading = false;
         if (datas == null) {
             loadFinish();
+            adapter.showFoot(hasMore);
             return;
         }
         int size = datas.size();
@@ -137,6 +138,7 @@ public class PageRecyclerViewHelper<T> {
                 onLoading = false;
                 if (datas == null) {
                     loadFinish();
+                    adapter.showFoot(hasMore);
                     return;
                 }
                 int size = datas.size();

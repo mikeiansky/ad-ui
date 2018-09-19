@@ -155,6 +155,7 @@ public class PageListViewHelper<T> {
                         hasMore = true;
                     }
                 } else {
+                    loadFinish();
                     hasMore = false;
                 }
                 adapter.addData(datas);
