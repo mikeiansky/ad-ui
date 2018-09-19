@@ -102,13 +102,15 @@ public class PhotoSelectUtils {
      * @param data
      */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQ_ALBUM) {
-            startPhotoCrop(data.getData());
-        } else if (requestCode == REQ_CAMERA) {
-            startPhotoCrop(getOutputUri());
-        } else if (requestCode == REQ_CROP) {
-            if (onPhotoSelectListener != null) {
-                onPhotoSelectListener.onPhotoSelect(getOutputFile());
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQ_ALBUM) {
+                startPhotoCrop(data.getData());
+            } else if (requestCode == REQ_CAMERA) {
+                startPhotoCrop(getOutputUri());
+            } else if (requestCode == REQ_CROP) {
+                if (onPhotoSelectListener != null) {
+                    onPhotoSelectListener.onPhotoSelect(getOutputFile());
+                }
             }
         }
     }
