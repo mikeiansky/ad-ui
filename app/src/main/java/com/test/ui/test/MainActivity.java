@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.winson.widget.EmptyViewUtils;
 import com.winson.widget.ImageUtils;
+import com.winson.widget.PinyinTool;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,10 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         testRoundIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bitmap bitmap = ImageUtils.convertRoundBitmap(MainActivity.this, R.mipmap.test_round,
-                        testRoundIV.getWidth(), testRoundIV.getHeight(), 50, ImageView.ScaleType.CENTER_INSIDE);
-
-                testRoundIV.setImageBitmap(bitmap);
+//                Bitmap bitmap = ImageUtils.convertRoundBitmap(MainActivity.this, R.mipmap.test_round,
+//                        testRoundIV.getWidth(), testRoundIV.getHeight(), 50, ImageView.ScaleType.CENTER_INSIDE);
+//
+//                testRoundIV.setImageBitmap(bitmap);
             }
         });
 
@@ -65,7 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = view.getId();
         switch (id) {
             case R.id.load:
-                EmptyViewUtils.showLoadingView(emptyGroup);
+//                EmptyViewUtils.showLoadingView(emptyGroup);
+
+                PinyinTool pt = new PinyinTool();
+                String result = pt.toPinYin("文");
+                Toast.makeText(this, "result : " + result, Toast.LENGTH_SHORT).show();
+
                 break;
             case R.id.error:
                 EmptyViewUtils.showErrorView(emptyGroup, null);
