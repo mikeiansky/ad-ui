@@ -28,6 +28,7 @@ public class PhotoSelectUtils {
     private Activity activity;
     private int outputX;
     private int outputY;
+    private boolean circle;
     private OnPhotoSelectListener onPhotoSelectListener;
 
     public PhotoSelectUtils(Activity activity) {
@@ -39,6 +40,14 @@ public class PhotoSelectUtils {
         float density = activity.getResources().getDisplayMetrics().density;
         outputX = (int) (outputX * density);
         outputY = (int) (outputY * density);
+    }
+
+    public boolean isCircle() {
+        return circle;
+    }
+
+    public void setCircle(boolean circle) {
+        this.circle = circle;
     }
 
     public void setOnPhotoSelectListener(OnPhotoSelectListener onPhotoSelectListener) {
@@ -65,6 +74,7 @@ public class PhotoSelectUtils {
         intent.putExtra("aspectY", 1);
         intent.putExtra("outputX", outputX);
         intent.putExtra("outputY", outputY);
+        intent.putExtra("circleCrop", circle);
         intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
         intent.putExtra("return-data", true);
         activity.startActivityForResult(intent, REQ_CROP);
