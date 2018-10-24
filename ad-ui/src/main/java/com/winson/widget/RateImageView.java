@@ -37,6 +37,14 @@ public class RateImageView extends ImageView {
      */
     private int mRateOrientation;
 
+    public void setRate(float rate) {
+        this.mRate = rate;
+    }
+
+    public void setRateOrientation(int rateOrientation) {
+        this.mRateOrientation = rateOrientation;
+    }
+
     public RateImageView(Context context) {
         super(context);
         init(context, null, 0, 0);
