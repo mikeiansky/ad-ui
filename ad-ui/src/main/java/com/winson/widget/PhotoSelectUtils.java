@@ -214,7 +214,7 @@ public class PhotoSelectUtils {
         if (!dirFolder.exists()) {
             dirFolder.mkdirs();
         }
-        return dir + "picture.jpg";
+        return dir + System.currentTimeMillis() + ".jpg";
     }
 
     public void deleteSelectCacheFile() {
