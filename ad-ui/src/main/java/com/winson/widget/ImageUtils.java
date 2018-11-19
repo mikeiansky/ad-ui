@@ -9,8 +9,9 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.support.annotation.NonNull;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
 
 public class ImageUtils {
 
@@ -24,25 +25,6 @@ public class ImageUtils {
             return null;
         }
         BitmapFactory.Options options = new BitmapFactory.Options();
-//        options.inJustDecodeBounds = true;
-//
-//        BitmapFactory.decodeResource(context.getResources(), resId, options);
-//        int width = options.outWidth;
-//        int height = options.outHeight;
-//
-//        if (width == 0 || height == 0) {
-//            return null;
-//        }
-//
-//        int cws = width / targetWidth;
-//        int chs = height / targetHeight;
-//
-//        int sampleSize = cws > chs ? cws : chs;
-////        sampleSize = sampleSize == 0 ? 1 : sampleSize;
-////        int sampleSize = 1;
-//
-//        options.inSampleSize = sampleSize;
-//        options.inJustDecodeBounds = false;
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resId, options);
         return getRoundBitmap(bitmap, targetWidth, targetHeight, radius, scaleType);
     }
