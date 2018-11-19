@@ -206,9 +206,9 @@ public class PhotoSelectUtils {
     private String getPath() {
         String dir = null;
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            dir = Environment.getExternalStorageDirectory() + "/ciwei/live/pictures/";
+            dir = Environment.getExternalStorageDirectory() + "/adui/pictures/";
         } else {
-            dir = activity.getCacheDir().getAbsolutePath() + File.separator + "pictures/";
+            dir = activity.getCacheDir().getAbsolutePath() + "/adui/pictures/";
         }
         File dirFolder = new File(dir);
         if (!dirFolder.exists()) {
