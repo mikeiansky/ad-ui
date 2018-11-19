@@ -92,8 +92,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.load:
 //                EmptyViewUtils.showLoadingView(emptyGroup);
 
-                photoSelectUtils.selectFromPhotoAlbum();
+//                photoSelectUtils.selectFromPhotoAlbum();
 //                photoSelectUtils.selectByCamera();
+
+                photoSelectUtils.showPhotoSelectActionSheet(view.getContext());
 
                 break;
             case R.id.error:

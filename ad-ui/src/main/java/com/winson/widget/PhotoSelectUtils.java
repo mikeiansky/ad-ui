@@ -1,23 +1,43 @@
 package com.winson.widget;
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.EditText;
+import android.widget.PopupWindow;
 
 import java.io.File;
+import java.lang.reflect.TypeVariable;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.PermissionChecker;
@@ -340,5 +360,48 @@ public class PhotoSelectUtils {
         return "com.android.providers.downloads.documents".equals(uri.getAuthority());
     }
 
+    public void showPhotoSelectActionSheet(Context context) {
+        View contentView = LayoutInflater.from(context).inflate(R.layout.pop_select_photo, null);
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        contentView.setMinimumWidth(windowManager.getDefaultDisplay().getWidth());
+
+        final Dialog dialog = new Dialog(context, R.style.ActionSheetDialogStyle);
+        dialog.setContentView(contentView);
+        Window dialogWindow = dialog.getWindow();
+        dialogWindow.setGravity(Gravity.LEFT | Gravity.BOTTOM);
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        lp.x = 0;
+        lp.y = 0;
+        dialogWindow.setAttributes(lp);
+
+        final View cancel = contentView.findViewById(R.id.cancel);
+        final View album = contentView.findViewById(R.id.album);
+        final View camera = contentView.findViewById(R.id.camera);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectByCamera();
+                dialog.dismiss();
+            }
+        });
+        album.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectFromPhotoAlbum();
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
+
+    }
 
 }
