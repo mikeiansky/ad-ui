@@ -29,16 +29,17 @@ android {
 }
 
 dependencies {
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-        implementation 'com.android.support:design:28.0.0-alpha3'
-    implementation 'com.android.support:support-v4:28.0.0-alpha3'
-//    implementation 'com.belerweb:pinyin4j:2.5.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+
 }
 
 def siteUrl = 'https://github.com/WinsonZhou/ad-ui' // 项目主页。
 def gitUrl = 'https://github.com/WinsonZhou/ad-ui.git' // Git仓库的url
 group = "com.github.winsonzhou"
-version = '1.1.7'
+version = '1.1.8'
 
 install {
     repositories.mavenInstaller {
@@ -115,7 +116,8 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "ad-ui"  //Repository名字 需要自己在bintray网站上先添加
-        name = "ad-ui"// 发布到Bintray上的项目名字，这里的名字不是compile 'com.ansen.library:circleimage:1.0.1'中的circleimage。
+        name = "ad-ui"
+// 发布到Bintray上的项目名字，这里的名字不是compile 'com.ansen.library:circleimage:1.0.1'中的circleimage。
         userOrg = 'winsonwork'//Bintray的组织id
         websiteUrl = siteUrl
         vcsUrl = gitUrl

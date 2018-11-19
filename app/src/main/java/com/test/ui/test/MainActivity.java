@@ -2,6 +2,7 @@ package com.test.ui.test;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ViewGroup emptyGroup;
     ImageView testRoundIV;
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +75,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (id) {
             case R.id.load:
 //                EmptyViewUtils.showLoadingView(emptyGroup);
-
-                PinyinTool pt = new PinyinTool();
-                String result = pt.toPinYin("文");
-                Toast.makeText(this, "result : " + result, Toast.LENGTH_SHORT).show();
-
                 break;
             case R.id.error:
                 EmptyViewUtils.showErrorView(emptyGroup, null);
