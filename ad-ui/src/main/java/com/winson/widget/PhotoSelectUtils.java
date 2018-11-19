@@ -64,7 +64,7 @@ public class PhotoSelectUtils {
             if (checkSelectPhotoPermission()) {
                 startPhotoPick();
             }
-        } else {
+        } else if (requestCode == REQ_SELECT_CAMERA_PERMISSION) {
             if (checkSelectCameraPermission()) {
                 startCamera();
             }
