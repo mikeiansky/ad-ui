@@ -1,7 +1,9 @@
 package com.test.ui.test;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,26 +13,41 @@ import android.widget.Toast;
 
 import com.winson.widget.EmptyViewUtils;
 import com.winson.widget.ImageUtils;
+import com.winson.widget.PhotoSelectUtils;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ViewGroup emptyGroup;
     ImageView testRoundIV;
+    PhotoSelectUtils photoSelectUtils;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        photoSelectUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        photoSelectUtils.onActivityResultForCrop(requestCode, resultCode, data);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        photoSelectUtils = new PhotoSelectUtils(this);
+        photoSelectUtils.setOnPhotoSelectListener(new PhotoSelectUtils.OnPhotoSelectListener() {
+            @Override
+            public void onPhotoSelect(String path) {
+                Log.d("TAG", "onPhotoSelect ------> " + path);
+            }
+        });
         emptyGroup = findViewById(R.id.empty_panel);
 
         findViewById(R.id.load).setOnClickListener(this);
@@ -74,6 +91,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (id) {
             case R.id.load:
 //                EmptyViewUtils.showLoadingView(emptyGroup);
+
+                photoSelectUtils.selectFromPhotoAlbum();
+//                photoSelectUtils.selectByCamera();
+
                 break;
             case R.id.error:
                 EmptyViewUtils.showErrorView(emptyGroup, null);
