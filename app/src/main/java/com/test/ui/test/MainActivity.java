@@ -1,5 +1,6 @@
 package com.test.ui.test;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.winson.widget.DialogUtils;
 import com.winson.widget.EmptyViewUtils;
 import com.winson.widget.ImageUtils;
 import com.winson.widget.PhotoSelectUtils;
@@ -63,10 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         testRoundIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 //                Bitmap bitmap = ImageUtils.convertRoundBitmap(MainActivity.this, R.mipmap.test_round,
-//                        testRoundIV.getWidth(), testRoundIV.getHeight(), 50, ImageView.ScaleType.CENTER_INSIDE);
-//
+//                testRoundIV.getWidth(), testRoundIV.getHeight(), 50, ImageView.ScaleType.CENTER_INSIDE);
 //                testRoundIV.setImageBitmap(bitmap);
+
             }
         });
 
@@ -76,10 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Bitmap bitmap = ImageUtils.convertRoundBitmap(MainActivity.this, R.mipmap.test_round,
                         testRoundIV.getWidth(), testRoundIV.getHeight(), 50, ImageView.ScaleType.CENTER_CROP);
-
                 testRoundIV.setImageBitmap(bitmap);
-
                 testRoundIV.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+
             }
         });
 
@@ -94,8 +96,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //                photoSelectUtils.selectFromPhotoAlbum();
 //                photoSelectUtils.selectByCamera();
+//                photoSelectUtils.showPhotoSelectActionSheet(view.getContext());
 
-                photoSelectUtils.showPhotoSelectActionSheet(view.getContext());
+                new DialogUtils.IOSBuilder(view.getContext())
+                        .setTitleText(R.string.album)
+                        .setMessageText("Welcome to ciwei!")
+                        .setDialogCallback(new DialogUtils.DialogCallback() {
+                            @Override
+                            public void onNegativeClick(Dialog dialog) {
+
+                            }
+
+                            @Override
+                            public void onPositiveClick(Dialog dialog) {
+
+                            }
+                        })
+                        .show();
 
                 break;
             case R.id.error:
