@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
@@ -32,7 +33,7 @@ public class DialogUtils {
 
     public static class IOSBuilder {
 
-        private static final int DEFAULT_TEXT_COLOR = Color.parseColor("#1E82FF");
+        private static final int DEFAULT_TEXT_COLOR = Color.DKGRAY;
         private Context context;
 
         private int dialogWidth;
@@ -144,18 +145,18 @@ public class DialogUtils {
             return this;
         }
 
-        public IOSBuilder setTitleTextColor(int titleTextColor) {
-            this.titleTextColor = titleTextColor;
+        public IOSBuilder setTitleTextColor(@ColorRes int titleTextColor) {
+            this.titleTextColor = context.getResources().getColor(titleTextColor);
             return this;
         }
 
-        public IOSBuilder setMessageTextColor(int messageTextColor) {
-            this.messageTextColor = messageTextColor;
+        public IOSBuilder setMessageTextColor(@ColorRes int messageTextColor) {
+            this.messageTextColor = context.getResources().getColor(messageTextColor);
             return this;
         }
 
-        public IOSBuilder setActionTextColor(int actionTextColor) {
-            this.actionTextColor = actionTextColor;
+        public IOSBuilder setActionTextColor(@ColorRes int actionTextColor) {
+            this.actionTextColor = context.getResources().getColor(actionTextColor);
             return this;
         }
 
