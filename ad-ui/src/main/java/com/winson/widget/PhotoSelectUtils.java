@@ -74,9 +74,8 @@ public class PhotoSelectUtils {
 
     public PhotoSelectUtils(Activity activity, int outputX, int outputY) {
         this.activity = activity;
-        float density = activity.getResources().getDisplayMetrics().density;
-        outputX = (int) (outputX * density);
-        outputY = (int) (outputY * density);
+        this.outputX = outputX;
+        this.outputY = outputY;
     }
 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -179,7 +178,7 @@ public class PhotoSelectUtils {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         intent.putExtra("crop", "true");
-        intent.putExtra("output", Uri.parse(getOutputPath()));
+        intent.putExtra("output", Uri.fromFile(new File(getOutputPath())));
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
         intent.putExtra("outputX", outputX);
@@ -191,16 +190,17 @@ public class PhotoSelectUtils {
     }
 
     private String getOutputPath() {
+        String dir = null;
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            File directory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
-                    "/Android/data/cache" + activity.getPackageName());
-            if (!directory.exists()) {
-                directory.mkdirs();
-            }
-            return directory.getAbsolutePath() + "/avatar.jpg";
+            dir = Environment.getExternalStorageDirectory() + "/adui/pictures/avatar/";
         } else {
-            return activity.getCacheDir().getAbsolutePath() + File.separator + "avatar.jpg";
+            dir = activity.getCacheDir().getAbsolutePath() + "/adui/pictures/avatar/";
         }
+        File dirFolder = new File(dir);
+        if (!dirFolder.exists()) {
+            dirFolder.mkdirs();
+        }
+        return dir + "avatar.jpg";
     }
 
     private String getPath() {
