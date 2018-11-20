@@ -6,35 +6,37 @@
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
     android:orientation="vertical"
-    android:paddingBottom="0dp">
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="vertical">
 
         <TextView
+            android:background="@drawable/slt_as_ios7_other_bt_top"
             android:id="@+id/camera"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
             android:text="@string/camera"
-            android:textColor="#333333"
+            android:textColor="#1E82FF"
             android:textSize="16sp" />
 
         <ImageView
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#CCCCCC" />
 
         <TextView
+            android:background="@drawable/slt_as_ios7_other_bt_bottom"
             android:id="@+id/album"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
             android:text="@string/album"
-            android:textColor="#333333"
+            android:textColor="#1E82FF"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -43,12 +45,12 @@
         android:id="@+id/cancel"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/slt_as_ios7_other_bt_single"
         android:gravity="center"
         android:text="@string/cancel"
-        android:textColor="#333333"
-        android:textSize="18sp" />
+        android:textColor="#1E82FF"
+        android:textSize="16sp" />
 
 
 </LinearLayout>
