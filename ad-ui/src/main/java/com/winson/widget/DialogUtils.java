@@ -33,7 +33,6 @@ public class DialogUtils {
 
     public static class IOSBuilder {
 
-        private static final int DEFAULT_TEXT_COLOR = Color.DKGRAY;
         private Context context;
 
         private int dialogWidth;
@@ -44,13 +43,13 @@ public class DialogUtils {
         private String positiveText;
 
         private Drawable backgroundDrawable;
-        private float titleTextSize = 18;
+        private float titleTextSize = 16;
         private float messageTextSize = 14;
-        private float actionTextSize = 14;
+        private float actionTextSize = 16;
 
-        private int titleTextColor = Color.DKGRAY;
-        private int messageTextColor = Color.GRAY;
-        private int actionTextColor = DEFAULT_TEXT_COLOR;
+        private int titleTextColor;
+        private int messageTextColor;
+        private int actionTextColor;
 
         private int dialogStyle;
         private boolean cancelable = true;
@@ -62,6 +61,9 @@ public class DialogUtils {
             dialogStyle = R.style.IOSDialogStyle;
             negativeText = context.getString(R.string.cancel);
             positiveText = context.getString(R.string.sure);
+            titleTextColor = context.getResources().getColor(R.color.dialog_title_text);
+            messageTextColor = context.getResources().getColor(R.color.dialog_message_text);
+            actionTextColor = context.getResources().getColor(R.color.dialog_action_text);
             dialogWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 245, context.getResources().getDisplayMetrics());
         }
 
