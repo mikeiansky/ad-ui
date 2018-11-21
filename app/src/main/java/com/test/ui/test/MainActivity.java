@@ -5,10 +5,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -116,7 +120,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.error:
-                EmptyViewUtils.showErrorView(emptyGroup, null);
+
+                final Dialog dialog = new Dialog(this, com.winson.widget.R.style.IOSDialogStyle);
+                int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 245, getResources().getDisplayMetrics());
+                View contentView = LayoutInflater.from(this).inflate(R.layout.dialog_share, null);
+                contentView.setMinimumWidth(width);
+
+                dialog.setContentView(contentView);
+                Window dialogWindow = dialog.getWindow();
+                dialogWindow.setGravity(Gravity.CENTER);
+                WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+                lp.x = 0;
+                lp.y = 0;
+                dialogWindow.setAttributes(lp);
+                dialog.show();
+
+//                EmptyViewUtils.showErrorView(emptyGroup, null);
                 break;
             case R.id.empty:
                 EmptyViewUtils.showEmptyView(emptyGroup, null);
