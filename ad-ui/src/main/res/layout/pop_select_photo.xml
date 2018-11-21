@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:background="@drawable/slt_as_ios7_other_bt_top"
+            android:background="@drawable/ios7_dialog_bt_top"
             android:id="@+id/camera"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -30,7 +30,7 @@
             android:background="#CCCCCC" />
 
         <TextView
-            android:background="@drawable/slt_as_ios7_other_bt_bottom"
+            android:background="@drawable/ios7_dialog_bt_bottom"
             android:id="@+id/album"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/slt_as_ios7_other_bt_single"
+        android:background="@drawable/ios7_dialog_bt_single"
         android:gravity="center"
         android:text="@string/cancel"
         android:textColor="#1E82FF"

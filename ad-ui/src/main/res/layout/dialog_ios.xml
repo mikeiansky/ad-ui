@@ -8,7 +8,7 @@
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/slt_as_ios7_other_bt_single" />
+        android:background="@drawable/ios7_dialog_bt_single" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/ios_dialog_left_selector"
+                android:background="@drawable/ios7_dialog_left_selector"
                 android:gravity="center"
                 android:textSize="18sp" />
 
@@ -69,7 +69,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/ios_dialog_right_selector"
+                android:background="@drawable/ios7_dialog_right_selector"
                 android:gravity="center"
                 android:textSize="18sp" />
 
