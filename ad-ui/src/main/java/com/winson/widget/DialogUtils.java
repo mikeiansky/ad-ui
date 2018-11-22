@@ -47,6 +47,7 @@ public class DialogUtils {
         private float titleTextSize = 16;
         private float messageTextSize = 14;
         private float actionTextSize = 16;
+        private boolean isSingleNotify = false;
 
         private int titleTextColor;
         private int messageTextColor;
@@ -81,6 +82,11 @@ public class DialogUtils {
 
         public IOSBuilder setMaxContentWith(int maxContentWidth) {
             this.maxContentWidth = maxContentWidth;
+            return this;
+        }
+
+        public IOSBuilder setIsSingleNotify(boolean isSingleNotify) {
+            this.isSingleNotify = isSingleNotify;
             return this;
         }
 
@@ -198,6 +204,12 @@ public class DialogUtils {
             final TextView message = contentView.findViewById(R.id.message);
             final TextView negative = contentView.findViewById(R.id.negative);
             final TextView positive = contentView.findViewById(R.id.positive);
+            final ImageView divider = contentView.findViewById(R.id.action_divider);
+
+            if(isSingleNotify){
+                negative.setVisibility(View.GONE);
+                divider.setVisibility(View.GONE);
+            }
 
             if (backgroundDrawable != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
