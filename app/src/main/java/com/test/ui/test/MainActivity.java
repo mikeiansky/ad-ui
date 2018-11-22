@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 new DialogUtils.IOSBuilder(view.getContext())
                         .setTitleText(R.string.album)
-                        .setMessageText("Welcome to ciwei!")
+                        .setMessageText("Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!")
                         .setDialogCallback(new DialogUtils.DialogCallback() {
                             @Override
                             public void onNegativeClick(Dialog dialog) {

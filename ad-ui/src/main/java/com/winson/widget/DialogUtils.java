@@ -36,6 +36,7 @@ public class DialogUtils {
         private Context context;
 
         private int dialogWidth;
+        private int maxContentWidth;
 
         private String titleText;
         private String messageText;
@@ -65,6 +66,7 @@ public class DialogUtils {
             messageTextColor = context.getResources().getColor(R.color.dialog_message_text);
             actionTextColor = context.getResources().getColor(R.color.dialog_action_text);
             dialogWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 245, context.getResources().getDisplayMetrics());
+            maxContentWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 245, context.getResources().getDisplayMetrics());
         }
 
         public IOSBuilder setBackground(Drawable background) {
@@ -74,6 +76,11 @@ public class DialogUtils {
 
         public IOSBuilder setBackground(@DrawableRes int background) {
             this.backgroundDrawable = context.getResources().getDrawable(background);
+            return this;
+        }
+
+        public IOSBuilder setMaxContentWith(int maxContentWidth) {
+            this.maxContentWidth = maxContentWidth;
             return this;
         }
 
@@ -176,6 +183,11 @@ public class DialogUtils {
             dialog.setContentView(contentView);
             Window dialogWindow = dialog.getWindow();
             dialogWindow.setGravity(Gravity.CENTER);
+            if (maxContentWidth != 0) {
+                contentView.getLayoutParams().width = maxContentWidth;
+            }
+
+
             WindowManager.LayoutParams lp = dialogWindow.getAttributes();
             lp.x = 0;
             lp.y = 0;
