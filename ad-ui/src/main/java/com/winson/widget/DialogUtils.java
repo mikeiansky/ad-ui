@@ -42,6 +42,7 @@ public class DialogUtils {
         private String messageText;
         private String negativeText;
         private String positiveText;
+        private int messageGravity = Gravity.LEFT;
 
         private Drawable backgroundDrawable;
         private float titleTextSize = 16;
@@ -68,6 +69,11 @@ public class DialogUtils {
             actionTextColor = context.getResources().getColor(R.color.dialog_action_text);
             dialogWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 245, context.getResources().getDisplayMetrics());
             maxContentWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 245, context.getResources().getDisplayMetrics());
+        }
+
+        public IOSBuilder setMessageGravity(int gravity) {
+            this.messageGravity = gravity;
+            return this;
         }
 
         public IOSBuilder setBackground(Drawable background) {
@@ -202,11 +208,12 @@ public class DialogUtils {
             final ImageView background = contentView.findViewById(R.id.background);
             final TextView title = contentView.findViewById(R.id.title);
             final TextView message = contentView.findViewById(R.id.message);
+            message.setGravity(messageGravity);
             final TextView negative = contentView.findViewById(R.id.negative);
             final TextView positive = contentView.findViewById(R.id.positive);
             final ImageView divider = contentView.findViewById(R.id.action_divider);
 
-            if(isSingleNotify){
+            if (isSingleNotify) {
                 negative.setVisibility(View.GONE);
                 divider.setVisibility(View.GONE);
             }

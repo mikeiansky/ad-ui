@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 new DialogUtils.IOSBuilder(view.getContext())
                         .setTitleText(R.string.album)
+                        .setMessageGravity(Gravity.CENTER)
                         .setMessageText("Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!")
                         .setIsSingleNotify(true)
                         .setDialogCallback(new DialogUtils.DialogCallback() {
