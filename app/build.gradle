@@ -11,14 +11,57 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "default"
+    productFlavors {
+        baidu {
+            manifestPlaceholders = [
+                    TEST_CHANNEL: "baidu"
+            ]
+        }
+        r360 {
+            manifestPlaceholders = [
+                    TEST_CHANNEL: "r360"
+            ]
+        }
+        wandoujia {
+            manifestPlaceholders = [
+                    TEST_CHANNEL: "wandoujia"
+            ]
+        }
+
+    }
+
     lintOptions {
         abortOnError false
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            variant.productFlavors.each { flavor ->
+                def project = "cpm"
+                def separator = "_"
+                def buildType = variant.variantData.variantConfiguration.buildType.name
+                def versionName = variant.versionName
+                def versionCode = variant.versionCode
+                def date = new Date()
+                def formattedDate = date.format('yyyyMMdd')
+
+                def apkName = project + separator + "v" + versionName + separator + versionCode + separator + buildType + separator + flavor.name + ".apk"
+                if (buildType == "release") {
+                    apkName = project + separator + "v" + versionName + separator + versionCode + separator + buildType + separator + flavor.name + separator + formattedDate + ".apk"
+                }
+
+                output.outputFileName = apkName
+            }
+        }
+    }
+
 }
 
 dependencies {
@@ -28,3 +71,5 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation project(':ad-ui')
 }
+
+

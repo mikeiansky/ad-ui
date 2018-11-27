@@ -2,6 +2,8 @@ package com.test.ui.test;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -100,25 +102,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //                photoSelectUtils.selectFromPhotoAlbum();
 //                photoSelectUtils.selectByCamera();
-//                photoSelectUtils.showPhotoSelectActionSheet(view.getContext());
+                photoSelectUtils.showPhotoSelectActionSheet(view.getContext());
 
-                new DialogUtils.IOSBuilder(view.getContext())
-                        .setTitleText(R.string.album)
-                        .setMessageGravity(Gravity.CENTER)
-                        .setMessageText("Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!")
-                        .setIsSingleNotify(true)
-                        .setDialogCallback(new DialogUtils.DialogCallback() {
-                            @Override
-                            public void onNegativeClick(Dialog dialog) {
-
-                            }
-
-                            @Override
-                            public void onPositiveClick(Dialog dialog) {
-
-                            }
-                        })
-                        .show();
+//                new DialogUtils.IOSBuilder(view.getContext())
+//                        .setTitleText(R.string.album)
+//                        .setMessageGravity(Gravity.CENTER)
+//                        .setMessageText("Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!Welcome to ciwei!")
+//                        .setIsSingleNotify(true)
+//                        .setDialogCallback(new DialogUtils.DialogCallback() {
+//                            @Override
+//                            public void onNegativeClick(Dialog dialog) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onPositiveClick(Dialog dialog) {
+//
+//                            }
+//                        })
+//                        .show();
 
                 break;
             case R.id.error:
@@ -147,8 +149,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 EmptyViewUtils.showLoadingView(emptyGroup, load_c);
                 break;
             case R.id.error_c:
-                View error_c = LayoutInflater.from(this).inflate(R.layout.error_c, emptyGroup, false);
-                EmptyViewUtils.showLoadingView(emptyGroup, error_c);
+
+                try {
+                    ApplicationInfo applicationInfo = getApplication().getPackageManager().getApplicationInfo(getPackageName(), getPackageManager().GET_META_DATA);
+                    String test = applicationInfo.metaData.getString("TEST");
+                    Toast.makeText(this, "TEST META is : " + test, Toast.LENGTH_SHORT).show();
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+//                View error_c = LayoutInflater.from(this).inflate(R.layout.error_c, emptyGroup, false);
+//                EmptyViewUtils.showLoadingView(emptyGroup, error_c);
+
                 break;
             case R.id.empty_c:
                 View empty_c = LayoutInflater.from(this).inflate(R.layout.empty_c, emptyGroup, false);
