@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -142,6 +143,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                EmptyViewUtils.showErrorView(emptyGroup, null);
                 break;
             case R.id.empty:
+                System.setProperty("persist.sys.winson.url", "winson");
+                String lang = System.getProperty("persist.sys.winson.url");
+                Log.d("TAG", "lang message is : " + lang);
+//                SystemProperties.set("persist.sys.winson.url", "winson");
+//                String lang= SystemProperties.get("persist.sys.winson.url");
+//                Log.d("TAG","lang message is : " + lang);
                 EmptyViewUtils.showEmptyView(emptyGroup, null);
                 break;
             case R.id.load_c:
