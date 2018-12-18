@@ -27,7 +27,14 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     }
 
     public void replaceData(List<T> datas) {
-        this.datas = datas;
+        if (this.datas == null) {
+            this.datas = datas;
+        } else {
+            this.datas.clear();
+            if (datas != null) {
+                this.datas.addAll(datas);
+            }
+        }
         notifyDataSetChanged();
     }
 
