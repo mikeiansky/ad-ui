@@ -103,7 +103,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //                photoSelectUtils.selectFromPhotoAlbum();
 //                photoSelectUtils.selectByCamera();
-                photoSelectUtils.showPhotoSelectActionSheet(view.getContext());
+                photoSelectUtils.showPhotoSelectActionSheet(view.getContext(), new DialogUtils.DialogCallback() {
+                    @Override
+                    public void onNegativeClick(Dialog dialog) {
+
+                    }
+
+                    @Override
+                    public void onPositiveClick(Dialog dialog) {
+
+                    }
+                });
 
 //                new DialogUtils.IOSBuilder(view.getContext())
 //                        .setTitleText(R.string.album)

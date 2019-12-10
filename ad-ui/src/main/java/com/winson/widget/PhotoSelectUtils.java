@@ -361,6 +361,10 @@ public class PhotoSelectUtils {
     }
 
     public void showPhotoSelectActionSheet(Context context) {
+        showPhotoSelectActionSheet(context, null);
+    }
+
+    public void showPhotoSelectActionSheet(Context context, final DialogUtils.DialogCallback callback) {
         View contentView = LayoutInflater.from(context).inflate(R.layout.pop_select_photo, null);
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         contentView.setMinimumWidth(windowManager.getDefaultDisplay().getWidth());
@@ -378,10 +382,21 @@ public class PhotoSelectUtils {
         final View album = contentView.findViewById(R.id.album);
         final View camera = contentView.findViewById(R.id.camera);
 
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                if (callback != null) {
+                    callback.onNegativeClick(null);
+                }
+            }
+        });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                if (callback != null) {
+                    callback.onNegativeClick(null);
+                }
             }
         });
         camera.setOnClickListener(new View.OnClickListener() {
@@ -389,6 +404,9 @@ public class PhotoSelectUtils {
             public void onClick(View v) {
                 selectByCamera();
                 dialog.dismiss();
+                if (callback != null) {
+                    callback.onPositiveClick(dialog);
+                }
             }
         });
         album.setOnClickListener(new View.OnClickListener() {
@@ -396,6 +414,9 @@ public class PhotoSelectUtils {
             public void onClick(View v) {
                 selectFromPhotoAlbum();
                 dialog.dismiss();
+                if (callback != null) {
+                    callback.onPositiveClick(dialog);
+                }
             }
         });
         dialog.setCancelable(true);
